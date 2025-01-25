@@ -13,7 +13,9 @@ import { useState } from "react";
 import styled from "styled-components";
 
 const StyledLabel = styled(InputLabel)`
-  padding-left: 10px;
+  &&& {
+    padding-left: 10px;
+  }
 `;
 
 const TzInput = () => {
