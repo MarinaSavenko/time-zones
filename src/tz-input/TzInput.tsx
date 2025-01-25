@@ -1,18 +1,21 @@
 import {useDispatch, useSelector} from "react-redux";
-import {City, setCity} from "../tz-citySlice/TzCitySlice.tsx";
+import {City, setCity, } from "../tz-citySlice/TzCitySlice.tsx";
 import {RootState} from "../app/store.tsx";
 
 const TzInput = () => {
-    const selectedCity = useSelector((state: RootState) => state.tzCity.selectedCity);
+   const selectedCity = useSelector((state: RootState) => state.tzCity.selectedCity);
     const cities = useSelector((state: RootState)=> state.tzCity.cities);
+    const timeZone = useSelector((state: RootState) => state.tzCity.timeZone);
 
-    const dispatch = useDispatch();
+    // console.log(selectedCity, cities);
+   const dispatch = useDispatch();
+
 
     const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-        dispatch(setCity(e.target.value));
+        const cityName = e.target.value;
+        dispatch(setCity(cityName));
+
     };
-
-
     return(
         <>
             <label>Select a city:</label>
@@ -23,6 +26,9 @@ const TzInput = () => {
                     </option>
                 ))}
             </select>
+            <div>
+                <p>Current time: {new Date().toLocaleString("ru-RU", {timeZone})}</p>
+            </div>
         </>
 
 

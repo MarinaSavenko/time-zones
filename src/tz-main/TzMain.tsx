@@ -1,4 +1,4 @@
-import TzInput from "../tz-intut/TzInput.tsx"
+import TzInput from "../tz-input/TzInput.tsx"
 
 
 const TzMain = () => {

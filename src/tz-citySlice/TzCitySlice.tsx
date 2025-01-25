@@ -8,6 +8,7 @@ export interface City {
 export interface TzCitySlice {
         cities: City[];
         selectedCity: string;
+        timeZone: string;
 }
 
 const initialState: TzCitySlice = {
@@ -23,17 +24,25 @@ const initialState: TzCitySlice = {
         { city: "Rio de Janeiro", timeZone: "America/Sao_Paulo" },
         { city: "Dubai", timeZone: "Asia/Dubai" },
         { city: "Calgary", timeZone: "America/Calgary" }
-        ],
-        selectedCity: "Kyiv",
+     ],
+    selectedCity: "Kyiv",
+    timeZone: "Europe/Kiev",
 };
 const tzCitySlice = createSlice ({
         name: 'tzCity',
         initialState,
         reducers: {
                 setCity: (state, action: PayloadAction<string>) => {
-                        state.selectedCity = action.payload;
-                }
+                    //console.log(action.payload);
+                    state.selectedCity = action.payload;
+                    const city = state.cities.find(city => city.city === action.payload);
+                    if (city) {
+                        state.timeZone = city.timeZone;
+                    }
+                },
+
         }
 });
-export const { setCity } = tzCitySlice.actions;
+//console.log(initialState);
+export const { setCity, } = tzCitySlice.actions;
 export default tzCitySlice.reducer;
