@@ -1,11 +1,14 @@
 import Stack from "@mui/material/Stack/Stack";
-import TzInput from "../tz-intut/TzInput.tsx";
+
 import { useState } from "react";
 import { IconButton } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
+import TzInput from "../tz-input/TzInput.tsx";
+
+
 
 const TzMain = () => {
-  const [cities, setCities] = useState<String[]>([""]);
+  const [cities, setCities] = useState<string[]>([""]);
   return (
     <Stack direction="row" justifyContent="space-around" gap="20px">
       {cities.map(() => (
@@ -18,6 +21,7 @@ const TzMain = () => {
       >
         <AddIcon />
       </IconButton>
+
     </Stack>
   );
 };
