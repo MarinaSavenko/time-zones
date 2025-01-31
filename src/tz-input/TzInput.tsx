@@ -18,19 +18,24 @@ const StyledLabel = styled(InputLabel)`
     padding-left: 10px;
   }
 `;
+const StyledFormControl = styled(FormControl)`
+  &&&  {
+      background-color: lightgreen;    
+    }
+`;
 
 const TzInput = () => {
   const [selectedCity, setCity] = useState<string>("");
   const cities = useSelector((state: RootState) => state.tzCity.cities);
 
   const handleChange = (value: SelectChangeEvent<string>) => {
-    console.log({ value });
+   // console.log({ value });
     setCity(value.target.value);
   };
 
   return (
-      <Stack flex="1">
-        <FormControl>
+      <Stack flex="1" gap="20px">
+        <StyledFormControl>
           <StyledLabel variant="standard" id="city-select">
             City
           </StyledLabel>
@@ -47,7 +52,7 @@ const TzInput = () => {
                 </MenuItem>
             ))}
           </Select>
-        </FormControl>
+        </StyledFormControl>
        {/* <div>
           <p>Current time: {new Date().toLocaleString("ru-RU", {selectedCity.timeZone})}</p>
         </div>*/}
